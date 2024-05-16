@@ -146,8 +146,10 @@ body {
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-image: url('https://ludopedio.org.br/wp-content/uploads/santos-x-flamengo-7.jpg');
   background-size: cover;
+  align-items: center;
+  
 }
 
 .login .container {
@@ -309,7 +311,7 @@ input {
 
 /* SIMULADOR */
 .box_memorial {
-  width: 60%;
+  width: 100%;
   background-color: black;
   border-radius: 10px;
   display: flex;
