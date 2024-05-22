@@ -108,14 +108,9 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = listaEmpresas.value
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      empresaVar == ""
-    ) {
+    var empresaVar = listaEmpresas.value;
+
+    if ( nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || empresaVar == "") {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para todos os campos em branco)";
@@ -124,7 +119,7 @@
       return false;
     } else {
       setInterval(sumirMensagem, 5000);
-    }
+    } 
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
