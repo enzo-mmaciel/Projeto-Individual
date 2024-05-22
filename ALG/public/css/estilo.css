@@ -87,10 +87,12 @@ height: 100%;
 }
 
 .banner .container p {
-  width: 50%;
-  margin: 0;
+  width: 100%;
+  margin: 2px;
   padding: 0;
-  font-size: 36px;
+  font-size: 40px;
+  background-color: black;
+  opacity: 70%;
 }
 
 .banner .container span {
@@ -133,7 +135,7 @@ height: 100%;
 
 .footer {
   background-color: black;
-  height: 150px;
+  height: 100px;
   color: #fff;
   display: flex;
   font-size: 15px;
@@ -393,11 +395,12 @@ input {
   background: whitesmoke;
   background-size: 400% 400%;
   padding: 5%;
-  height: 350px;
-  border-top: 2px solid #000000;
-  border-bottom: 3px solid blue;
+  height: 370px;
+  border-top: 3px solid #000000;
+  border-bottom: 3px solid black;
   display: flex;
   justify-content: space-between;
+
 }
 
 .corpo3 {
@@ -421,6 +424,8 @@ width: 500px;
 
 .TextoSobreMIM {
 width: 600px;
+margin-bottom: 10px;
+font-size: 23px;
 
 
 
@@ -435,13 +440,25 @@ opacity: 100%;
 
 
 .imagem_time {
-width: 700px;
-border: 2px black;
+width: 600px;
+border: 5px solid black;
 box-shadow: 0px 0px 5px black;
 margin-right: 50px;
+justify-content: right;
+border-radius: 20px;
+
 }
 
-.sobre {
-font-size: xx-large;
+.sobre h1 {
+font-size: 20px
+
+}
+
+.texto_sobre {
+border: 5px solid black;
+padding: 3px;
+border-radius: 20px;
+box-shadow: 0px 0px 5px black;
+
 
 }
