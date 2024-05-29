@@ -17,20 +17,18 @@ senha varchar(45)
 
 create table quiz (
 idQuiz int primary key auto_increment,
-jogo_preferido varchar(45),
-idolo varchar(45),
-titulo_marcante varchar(45),
-camisa_preferida varchar(45),
+pontuacao varchar(45),
+acertos varchar(45),
+erros varchar(45),
 fkUsuario int,
 foreign key (fkUsuario) references usuario(idUsuario)
 );
 
 create table forum(
 idForum int primary key auto_increment,
-comentario text,
-dtComentario timestamp,
-tag varchar(45),
-fkUsuario int,
+titulo varchar(45),
+texto text,
+fkUsuario int, 
 foreign key (fkUsuario) references usuario(idUsuario)
 );
 

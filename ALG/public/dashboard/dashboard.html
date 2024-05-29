@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>Quiz | Blog do Santos FC</title>
 
     
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -46,7 +46,7 @@
 
             <div class="btn-nav">
 
-                <h3>Gráficos</h3>
+                <h3> Quiz</h3>
 
             </div>
 
@@ -63,15 +63,109 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
-            </div>
+            <div id="quiz_container">
+				<div id="inicarQuiz">
+					<h1>Quiz Santos FC</h1>
+					<p>Quanto você sabe sobre o Santos FC ?</p>
+					<button onclick="iniciar()">Jogar</button>
+				</div>
+				<div id="quiz" style="display: none;">
+					<div id="pergunta1" class="pergunta">
+						<h2>Qual é o estádio do Santos FC?</h2>
+						<button onclick="responder('pergunta1', false)">Maracanã</button>
+						<button onclick="responder(this, 'Vila Belmiro')">Vila Belmiro</button>
+						<button onclick="responder('pergunta1', false)">Pacaembu</button>
+						<button onclick="responder('pergunta1', false)">Morumbi</button>
+					</div>
 
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
-        </div>
+					<div id="pergunta2" class="pergunta" style="display: none;">
+						<h2>Quantas vezes o Santos FC venceu a Libertadores?</h2>
+						<button onclick="responder('pergunta2', false)">1</button>
+						<button onclick="responder('pergunta2', false)">2</button>
+						<button onclick="responder(this, '3')">3</button>
+						<button onclick="responder('pergunta2', false)">4</button>
+					</div>
+
+					<div id="pergunta3" class="pergunta" style="display: none;">
+						<h2>Qual título o Santos conquistou em 2011?</h2>
+						<button onclick="responder('pergunta3', false)">Brasileiro</button>
+						<button onclick="responder(this, 'Libertadores')">Libertadores</button>
+						<button onclick="responder('pergunta3', false)">Copa do Brasil</button>
+						<button onclick="responder('pergunta3', false)">Mundial de Clubes</button>
+					</div>
+
+					<div id="pergunta4" class="pergunta" style="display: none;">
+						<h2>Em que ano Neymar estreou no time principal do Santos?</h2>
+						<button onclick="responder('pergunta4', false)">2007</button>
+						<button onclick="responder('pergunta4', false)">2011</button>
+						<button onclick="responder('pergunta4', false)">2013</button>
+						<button onclick="responder(this, '2009')">2009</button>
+					</div>
+
+					<div id="pergunta5" class="pergunta" style="display: none;">
+						<h2>Qual é o maior rival do Santos FC?</h2>
+						<button onclick="responder('pergunta5', false)">Palmeiras</button>
+						<button onclick="responder(this, 'Corinthians')">Corinthians</button>
+						<button onclick="responder('pergunta5', false)">São Paulo</button>
+						<button onclick="responder('pergunta5', false)">Ponte Preta</button>
+					</div>
+
+					<div id="pergunta6" class="pergunta" style="display: none;">
+						<h2>Qual foi o maior placar já registrado em um jogo oficial do Santos FC?</h2>
+						<button onclick="responder('pergunta6', false)">9-1</button>
+						<button onclick="responder('pergunta6', false)">15-0</button>
+						<button onclick="responder('pergunta6', false)">10-1</button>
+						<button onclick="responder(this, '11-0')">11-0</button>
+					</div>
+
+					<div id="pergunta7" class="pergunta" style="display: none;">
+						<h2>Quantos gols Pelé marcou pelo Santos FC?</h2>
+						<button onclick="responder('pergunta7', false)">987</button>
+						<button onclick="responder('pergunta7', false)">1087</button>
+						<button onclick="responder(this, '1091')">1091</button>
+						<button onclick="responder('pergunta7', false)">1147</button>
+					</div>
+
+					<div id="pergunta8" class="pergunta" style="display: none;">
+						<h2>Em qual ano o Santos Futebol Clube foi fundado?</h2>
+						<button onclick="responder(this, '1912')">1912</button>
+						<button onclick="responder('pergunta8', false)">1920</button>
+						<button onclick="responder('pergunta8', false)">1932</button>
+						<button onclick="responder('pergunta8', false)">1942</button>
+					</div>
+
+					<div id="pergunta9" class="pergunta" style="display: none;">
+						<h2>Em que ano Pelé marcou seu milésimo gol?</h2>
+						<button onclick="responder('pergunta9', false)">1965</button>
+						<button onclick="responder('pergunta9', false)">1967</button>
+						<button onclick="responder(this, '1969')">1969</button>
+						<button onclick="responder('pergunta9', false)">1971</button>
+					</div>
+
+					<div id="pergunta10" class="pergunta" style="display: none;">
+						<h2>Quem é o maior goleador do Santos FC após Pelé?</h2>
+						<button onclick="responder(this, 'Pepe')">Pepe</button>
+						<button onclick="responder('pergunta10', false)">Neymar</button>
+						<button onclick="responder('pergunta10', false)">Rodrygo</button>
+						<button onclick="responder('pergunta10', false)">Gabriel Barbosa (Gabgol)</button>
+					</div>
+
+				</div>
+				<div id="resultados" style="display: none;">
+					<h2>Resultados do Quiz</h2>
+					<canvas id="graficoResultados"></canvas>
+					<div id="indicadores">
+						<p>Média de acertos: <span id="media"></span></p>
+						<p>Você está <span id="acimaOuAbaixo"></span> da média.</p>
+						<p>Desempenho: <span id="desempenho"></span></p>
+					</div>
+					<button onclick="voltar()">Voltar</button>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
     </div>
 
 
@@ -79,7 +173,138 @@
 
 </html>
 
+
 <script>
+
+
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+let respostasCorretas = 0;
+let respostasIncorretas = 0;
+
+function iniciar() {
+    document.getElementById('inicarQuiz').style.display = 'none';
+    document.getElementById('quiz').style.display = 'block';
+}
+
+let perguntaAtual = 1;
+let totalDePergutas = 10;
+
+function responder(botao, respostaCorreta) {
+    const respostaSelecionada = botao.textContent;
+    if (respostaSelecionada === respostaCorreta) {
+        respostasCorretas++;
+    } else {
+        respostasIncorretas++;
+    }
+
+    document.getElementById("pergunta" + perguntaAtual).style.display = "none";
+
+    if (perguntaAtual < totalDePergutas) {
+        perguntaAtual++;
+        document.getElementById("pergunta" + perguntaAtual).style.display = "block";
+    } else {
+        exibirResultados();
+    }
+}
+
+function obterIdUsuario() {
+    return sessionStorage.ID_USUARIO;
+}
+
+function exibirResultados() {
+    const fk_usuario = obterIdUsuario();
+
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("resultados").style.display = "block";
+
+    const totalRespostas = respostasCorretas + respostasIncorretas;
+    const media = (respostasCorretas / totalRespostas) * 100;
+    document.getElementById("media").textContent = media.toFixed(2) + "%";
+
+    const mediaGeral = 70;
+    if (media >= mediaGeral) {
+        document.getElementById("acimaOuAbaixo").textContent = "acima";
+    } else {
+        document.getElementById("acimaOuAbaixo").textContent = "abaixo";
+    }
+
+    let desempenho = '';
+    if (media >= 80) {
+        desempenho = 'Bom';
+    } else if (media >= 50) {
+        desempenho = 'Médio';
+    } else {
+        desempenho = 'Ruim';
+    }
+    document.getElementById("desempenho").textContent = desempenho;
+
+    fetch('/medidas/salvar-resultados', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            acertos: respostasCorretas,
+            erros: respostasIncorretas,
+            fk_usuario: fk_usuario
+        })
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao salvar resultados');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Resultados salvos com sucesso:', data);
+        })
+        .catch(error => {
+            console.error('Erro ao salvar resultados:', error);
+        });
+
+    const ctx = document.getElementById('graficoResultados').getContext('2d');
+    const quizChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Respostas Corretas', 'Respostas Incorretas'],
+            datasets: [{
+                label: 'Quantidade',
+                data: [respostasCorretas, respostasIncorretas],
+                backgroundColor: [
+                    'rgba(75, 192, 192)',
+                    'rgba(255, 99, 132)',
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function voltar() {
+    window.location.href = './mainPage.html';
+}
+</script>
+
+
+
+
+
+
+
+</script>
+<!-- <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
@@ -315,4 +540,4 @@
             });
 
     }
-</script>
+</script> -->
