@@ -89,6 +89,7 @@ function insercao(req, res) {
     var respostaCorreta = req.body.respostaCorretaServer;
     var RespostaIncorreta = req.body.RespostaIncorretaServer;
     var idUsuario = req.body.idUsuarioServer;
+    console.log(`Log do usuario controller : valor Resposta correta: ${respostaCorreta} - resposta incorreta ${RespostaIncorreta}`)
     // var empresaId = req.body.empresaServer;
 
     // Faça as validações dos valores
@@ -96,7 +97,7 @@ function insercao(req, res) {
     
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.insercao(respostaCorreta, RespostaIncorreta, idUsuario)
+        usuarioModel.insercao(respostaCorreta, RespostaIncorreta, idUsuario); console.log(`valor resposta correta ${respostaCorreta} valor resposta incorreta ${RespostaIncorreta}`)
             .then(
                 function (resultado) {
                     res.json(resultado);
