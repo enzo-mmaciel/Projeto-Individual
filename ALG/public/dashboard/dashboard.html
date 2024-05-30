@@ -60,6 +60,7 @@
                 <h3>Sair</h3>
             </div>
 
+            <div id="div_mensagem"></div>
         </div>
 
         <div class="dash">
@@ -147,7 +148,7 @@
 						<button onclick="responder(this, 'Pepe')">Pepe</button>
 						<button onclick="responder('pergunta10', false)">Neymar</button>
 						<button onclick="responder('pergunta10', false)">Rodrygo</button>
-						<button onclick="responder('pergunta10', false)">Gabriel Barbosa (Gabgol)</button>
+						<button onclick="responder('pergunta10', false)">Gabriel Barbosa (Gabigol)</button>
 					</div>
 
 				</div>
@@ -176,36 +177,60 @@
 
 <script>
 
+var respostaCorreta = ['Vila Belmiro', '3', 'Libertadores','2009', 'Corinthians', '11-0', '1091','1912', '1969', 'Pepe'];
+
+var certo = 0;
+var errado = 0;
 
 b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-let respostasCorretas = 0;
-let respostasIncorretas = 0;
+var respostaCorreta = 0;
+var RespostaIncorreta = 0;
 
 function iniciar() {
     document.getElementById('inicarQuiz').style.display = 'none';
     document.getElementById('quiz').style.display = 'block';
 }
 
-let perguntaAtual = 1;
-let totalDePergutas = 10;
+var perguntaAtual = 1;
+var totalDePerguntas = 10;
 
 function responder(botao, respostaCorreta) {
-    const respostaSelecionada = botao.textContent;
-    if (respostaSelecionada === respostaCorreta) {
-        respostasCorretas++;
-    } else {
-        respostasIncorretas++;
+        const respostaSelecionada = botao.textContent;
+        var totalDePergutas = 10;
+        if (respostaSelecionada === respostaCorreta) {
+            respostaCorreta++;
+        } else {
+            RespostaIncorreta++;
+        }
+        document.getElementById("pergunta" + perguntaAtual).style.display = "none";
+        if (perguntaAtual < totalDePerguntas) {
+            perguntaAtual++;
+            document.getElementById("pergunta" + perguntaAtual).style.display = "block";
+        } else {
+            div_mensagem.innerHTML = `<button onclick="insercao()">Finalizar</button>
+`
+        }
     }
 
-    document.getElementById("pergunta" + perguntaAtual).style.display = "none";
 
-    if (perguntaAtual < totalDePergutas) {
-        perguntaAtual++;
-        document.getElementById("pergunta" + perguntaAtual).style.display = "block";
-    } else {
-        exibirResultados();
-    }
+
+function insercao(){
+    var respostaCorretaVar = respostaCorreta;
+        var RespostaIncorretaVar = RespostaIncorreta;
+        
+        fetch("/usuarios/insercao", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        },
+      body: JSON.stringify({
+        respostaCorretaServer: respostaCorretaVar,
+        RespostaIncorretaServer: RespostaIncorretaVar,
+        idUsuarioServer: sessionStorage.ID_USUARIO,
+      }),
+        })
+
 }
 
 function obterIdUsuario() {
@@ -213,23 +238,23 @@ function obterIdUsuario() {
 }
 
 function exibirResultados() {
-    const fk_usuario = obterIdUsuario();
+    var fk_usuario = obterIdUsuario();
 
     document.getElementById("quiz").style.display = "none";
     document.getElementById("resultados").style.display = "block";
 
-    const totalRespostas = respostasCorretas + respostasIncorretas;
-    const media = (respostasCorretas / totalRespostas) * 100;
+    var totalRespostas = respostasCorretas + respostasIncorretas;
+    var media = (respostasCorretas / totalRespostas) * 100;
     document.getElementById("media").textContent = media.toFixed(2) + "%";
 
-    const mediaGeral = 70;
+    var mediaGeral = 70;
     if (media >= mediaGeral) {
         document.getElementById("acimaOuAbaixo").textContent = "acima";
     } else {
         document.getElementById("acimaOuAbaixo").textContent = "abaixo";
     }
 
-    let desempenho = '';
+    var desempenho = '';
     if (media >= 80) {
         desempenho = 'Bom';
     } else if (media >= 50) {
@@ -245,8 +270,8 @@ function exibirResultados() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            acertos: respostasCorretas,
-            erros: respostasIncorretas,
+            acertos: respostaCorreta,
+            erros: RespostaIncorreta,
             fk_usuario: fk_usuario
         })
     })
@@ -263,8 +288,8 @@ function exibirResultados() {
             console.error('Erro ao salvar resultados:', error);
         });
 
-    const ctx = document.getElementById('graficoResultados').getContext('2d');
-    const quizChart = new Chart(ctx, {
+    var ctx = document.getElementById('graficoResultados').getContext('2d');
+    var quizChart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: ['Respostas Corretas', 'Respostas Incorretas'],
@@ -293,9 +318,8 @@ function exibirResultados() {
 }
 
 function voltar() {
-    window.location.href = './mainPage.html';
+    window.location.href = './cards.html';
 }
-</script>
 
 
 

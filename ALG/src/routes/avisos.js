@@ -27,4 +27,8 @@ router.delete("/deletar/:idAviso", function (req, res) {
     avisoController.deletar(req, res);
 });
 
+router.post("/forumInsert", function (req, res) {
+    avisoController.forumInsert(req, res);
+});
+
 module.exports = router;

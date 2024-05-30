@@ -16,8 +16,20 @@ function cadastrar(empresaId, descricao) {
   return database.executar(instrucaoSql);
 }
 
+function forumInsert(titulo, text, idUsuario) {
+
+  var instrucaoSql2 = `INSERT INTO (titulo, descricao, fk_usuario) forum VALUES (${titulo}, ${text}, ${idUsuario})`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql2);
+  return database.executar(instrucaoSql2);
+  
+}
+
+
+
 
 module.exports = {
   buscarAquariosPorEmpresa,
-  cadastrar
+  cadastrar,
+  forumInsert
 }

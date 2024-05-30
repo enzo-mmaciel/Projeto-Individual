@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Avisos</title>
+    <title>Blog do Santos FC | Forum</title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
@@ -82,7 +82,7 @@
                         </form>
                     </div>
                     <h1>Mural</h1>
-                    <div class="div-results">
+                 
                         <div id="feed_container" class="feed-container">
                         </div>
                     </div>
@@ -99,6 +99,23 @@
 </html>
 
 <script>
+
+    function forumInsert() {
+        var tituloVar = titulo.value;
+        var textVar = textarea_descricao.value;
+
+        fetch(`/avisos/forumInsert`,{
+            method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+         }, body: JSON.stringify({
+        tituloServer: tituloVar,
+        textServer: textVar,
+        id_UsuarioServer: sessionStorage.ID_USUARIO,
+      }),
+        
+    });
+} 
     
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
@@ -203,7 +220,7 @@
                         var btnDeletar = document.createElement("button");
 
 
-                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        // spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
                         spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
                         spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                         divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";

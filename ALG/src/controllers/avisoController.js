@@ -126,11 +126,35 @@ function deletar(req, res) {
         );
 }
 
+function forumInsert(req, res) {
+var titulo = req.body.tituloServer;
+var text = req.body.textServer;
+var idUsuario = req.body.id_UsuarioServer;
+
+avisoModel.forumInsert(titulo, text, idUsuario)
+.then(
+    function (resultado) {
+        res.json(resultado);
+    }
+).catch(
+    function (erro) {
+        console.log(erro);
+        console.log(
+            "\nHouve um erro ao realizar o cadastro! Erro: ",
+            erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+    }
+);
+
+}
+
 module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    deletar,
+    forumInsert
 }

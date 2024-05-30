@@ -23,7 +23,7 @@ function autenticar(req, res) {
 
                         if (resultadoAutenticar.length > 0) {
                             res.json({
-                                id: resultadoAutenticar[0].id,
+                                idUsuario: resultadoAutenticar[0].idUsuario,
                                 email: resultadoAutenticar[0].email,
                                 nome: resultadoAutenticar[0].nome,
                                 senha: resultadoAutenticar[0].senha,
@@ -84,7 +84,38 @@ function cadastrar(req, res) {
     }
 }
 
+function insercao(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var respostaCorreta = req.body.respostaCorretaServer;
+    var RespostaIncorreta = req.body.RespostaIncorretaServer;
+    var idUsuario = req.body.idUsuarioServer;
+    // var empresaId = req.body.empresaServer;
+
+    // Faça as validações dos valores
+    
+    
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.insercao(respostaCorreta, RespostaIncorreta, idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    insercao
 }
