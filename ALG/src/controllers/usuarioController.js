@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
+
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -84,39 +84,82 @@ function cadastrar(req, res) {
     }
 }
 
-function insercao(req, res) {
+function insert_banco(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var respostaCorreta = req.body.respostaCorretaServer;
-    var RespostaIncorreta = req.body.RespostaIncorretaServer;
+    var respCorreta = req.body.respCorretaServer;
+    var respErrada = req.body.respErradaServer;
     var idUsuario = req.body.idUsuarioServer;
-    console.log(`Log do usuario controller : valor Resposta correta: ${respostaCorreta} - resposta incorreta ${RespostaIncorreta}`)
-    // var empresaId = req.body.empresaServer;
 
-    // Faça as validações dos valores
-    
-    
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.insert_banco(respCorreta, respErrada, idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.insercao(respostaCorreta, RespostaIncorreta, idUsuario); console.log(`valor resposta correta ${respostaCorreta} valor resposta incorreta ${RespostaIncorreta}`)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    
 }
+
+function showQuiz(req, res) {
+var idUsuario = req.body.idUsuarioServer;
+usuarioModel.showQuiz(idUsuario) 
+    .then(
+        function (resultadoShowQuiz){
+           res.json({
+            resultadoShowQuiz
+           })
+        }
+    )
+}
+
+
+function findQuiz(req, res) {
+    const limite_linhas = 1;
+
+    usuarioModel.findQuiz(limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function findLastQuiz(req, res) {
+    const limite_linhas = 1;
+
+    usuarioModel.findLastQuiz(limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 
 module.exports = {
     autenticar,
     cadastrar,
-    insercao
+    insert_banco,
+    showQuiz,
+    findQuiz,
+    findLastQuiz
 }

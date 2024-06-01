@@ -568,3 +568,21 @@ align-items: center;
 #resultados button:hover {
   background-color: #0056b3;
 }
+
+.iniciarQuiz{
+
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1em;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px 0;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Garante que os botões ocupem toda a largura disponível */
+  text-align: center; /* Centraliza o texto dos botões */
+
+
+}

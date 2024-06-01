@@ -12,9 +12,20 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
-router.post("/insercao", function (req, res) {
-    usuarioController.insercao(req, res);
+router.post("/insert_banco", function (req, res) {
+    usuarioController.insert_banco(req, res);
 });
 
+router.post("/showQuiz", function (req, res) {
+    usuarioController.showQuiz(req, res);
+});
+
+router.get("/findQuiz", function (req, res) {
+    usuarioController.findQuiz(req, res);
+});
+
+router.get("/findLastQuiz", function (req, res) {
+    usuarioController.findLastQuiz(req, res);
+});
 
 module.exports = router;
