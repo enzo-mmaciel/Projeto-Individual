@@ -27,7 +27,7 @@ function insert_banco(respCorreta, respErrada, idUsuario) {
     
  
     var instrucaoSql = `
-        INSERT INTO quiz (acertos, erros, fkUsuario) VALUES ('${respCorreta}', '${respErrada}', '${idUsuario}');
+        INSERT INTO quiz (acertos, erros, fkUsuario) VALUES (${respCorreta}, ${respErrada}, ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -38,7 +38,7 @@ function showQuiz(idUsuario) {
     
  
     var instrucaoSql = `
-        SELECT acertos, erros FROM quiz WHERE idQuiz = (SELECT MAX(idQuiz) FROM quiz WHERE fkUsuario = "${idUsuario}");
+        SELECT acertos, erros FROM quiz WHERE idQuiz = (SELECT MAX(idQuiz) FROM quiz WHERE fkUsuario = ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -49,7 +49,7 @@ function findQuiz(idUsuario) {
     
  
     var instrucaoSql = `
-        SELECT acertos, erros FROM quiz WHERE idQuiz = (SELECT MAX(idQuiz) FROM quiz WHERE fkUsuario = "${idUsuario}");
+        SELECT acertos, erros FROM quiz WHERE idQuiz = (SELECT MAX(idQuiz) FROM quiz WHERE fkUsuario = ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -60,7 +60,7 @@ function findLastQuiz(idUsuario) {
     
  
     var instrucaoSql = `
-        SELECT acertos, erros FROM quiz WHERE idQuiz = (SELECT MAX(idQuiz) FROM quiz WHERE fkUsuario = "${idUsuario}");
+        SELECT acertos, erros FROM quiz WHERE idQuiz = (SELECT MAX(idQuiz) FROM quiz WHERE fkUsuario = ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

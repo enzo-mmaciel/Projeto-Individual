@@ -20,11 +20,11 @@ router.post("/showQuiz", function (req, res) {
     usuarioController.showQuiz(req, res);
 });
 
-router.get("/findQuiz", function (req, res) {
+router.post("/findQuiz", function (req, res) {
     usuarioController.findQuiz(req, res);
 });
 
-router.get("/findLastQuiz", function (req, res) {
+router.post("/findLastQuiz", function (req, res) {
     usuarioController.findLastQuiz(req, res);
 });
 

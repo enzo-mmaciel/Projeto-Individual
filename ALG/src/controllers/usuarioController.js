@@ -124,8 +124,9 @@ usuarioModel.showQuiz(idUsuario)
 
 function findQuiz(req, res) {
     const limite_linhas = 1;
+    var idUsuario = req.body.idUsuarioServer;
 
-    usuarioModel.findQuiz(limite_linhas).then(function (resultado) {
+    usuarioModel.findQuiz(idUsuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -140,8 +141,9 @@ function findQuiz(req, res) {
 
 function findLastQuiz(req, res) {
     const limite_linhas = 1;
-
-    usuarioModel.findLastQuiz(limite_linhas).then(function (resultado) {
+    var idUsuario = req.body.idUsuarioServer;
+    
+    usuarioModel.findLastQuiz(idUsuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

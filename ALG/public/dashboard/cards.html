@@ -2,13 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="css/png-transparent-santos-fc-dream-league-soccer-campeonato-brasileiro-serie-a-brazil-national-football-team-national-women-s-soccer-league-football-thumbnail.png" type="">
+    <link rel="shortcut icon" href="" type="">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog do Santos FC | Tempo Real</title>
 
-
+    <link rel="shortcut icon" href="" type="image/x-icon">
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
 
@@ -16,12 +16,16 @@
     <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+
+    <link rel="shortcut icon"
+        href="css/png-transparent-santos-fc-dream-league-soccer-campeonato-brasileiro-serie-a-brazil-national-football-team-national-women-s-soccer-league-football-thumbnail.png">
 </head>
 
 <body>
-            <div id="graficos"></div>
+    <div id="graficos"></div>
     <div class="janela">
 
         <div class="header-left dash-header">
@@ -54,19 +58,19 @@
 
         </div>
 
-    </div>    
+    </div>
 
 </body>
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-let proximaAtualizacao;
+    let proximaAtualizacao;
 
-window.onload = showQuizUsers();
+    window.onload = showQuizUsers();
 
-function showQuizUsers() {
-    document.getElementById("graficos").innerHTML += `
+    function showQuizUsers() {
+        document.getElementById("graficos").innerHTML += `
     <div id="grafico">
         <h3 class="tituloGraficos">
             <span id="tituloGrafico">Seu resultado após o Quiz</span>
@@ -80,15 +84,23 @@ function showQuizUsers() {
     </div>
 `;
 
-    obterDadosGrafico();
-}
+        obterDadosGrafico();
+    }
 
-function obterDadosGrafico() {
+    function obterDadosGrafico() {
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/usuarios/findQuiz/`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/usuarios/findQuiz/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.ID_USUARIO
+            })
+        }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -102,65 +114,64 @@ function obterDadosGrafico() {
                 console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
             });
     }
-    
-   
-   
+
+
     function plotarGrafico(resposta) {
-    console.log('Iniciando plotagem do gráfico...');
+        console.log('Iniciando plotagem do gráfico...');
 
-    let labels = ["Certas                                            |                                           Erradas"];
+        let labels = ["Certas                                            |                                           Erradas"];
 
-    let dados = {
-        labels: labels,
-        datasets: [{
-            label: 'Certas',
-            data: [resposta[0].acertos],
-            backgroundColor: 'blue',
-            borderColor: 'blue',
-            borderWidth: 1
-        },
-        {
-            label: 'Erradas',
-            data: [resposta[0].erros],
-            backgroundColor: 'red',
-            borderColor: 'red',
-            borderWidth: 1
-        }]
-    };
-
-    // Configuração do gráfico
-    const config = {
-        type: 'bar',
-        data: dados,
-        options: {
-            plugins: {
-                legend: {
-                    labels: {
-                        color: 'white' // Cor das legendas
-                    }
-                }
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Certas',
+                data: [resposta[0].acertos],
+                backgroundColor: 'blue',
+                borderColor: 'blue',
+                borderWidth: 1
             },
-            scales: {
-                x: {
-                    ticks: {
-                        color: 'white' // Cor dos rótulos do eixo X
+            {
+                label: 'Erradas',
+                data: [resposta[0].erros],
+                backgroundColor: 'red',
+                borderColor: 'red',
+                borderWidth: 1
+            }]
+        };
+
+        // Configuração do gráfico
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white' // Cor das legendas
+                        }
                     }
                 },
-                y: {
-                    ticks: {
-                        color: 'white' // Cor dos rótulos do eixo Y
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white' // Cor dos rótulos do eixo X
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: 'white' // Cor dos rótulos do eixo Y
+                        }
                     }
                 }
             }
-        }
-    };
+        };
 
-    // Adicionando gráfico criado em div na tela
-    let myChart = new Chart(
-        document.getElementById('myChartCanvas'),
-        config
-    );
-}
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById('myChartCanvas'),
+            config
+        );
+    }
 
 
 
