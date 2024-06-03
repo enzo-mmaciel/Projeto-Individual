@@ -11,7 +11,7 @@
   <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
+  <link rel="icon" href="css/png-transparent-santos-fc-dream-league-soccer-campeonato-brasileiro-serie-a-brazil-national-football-team-national-women-s-soccer-league-football-thumbnail.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -19,7 +19,7 @@
   <!--header inicio-->
   <div class="header">
     <div class="container">
-      <h1 class="titulo">AquaTech</h1>
+      <h1 class="titulo">Blog do Santos FC</h1>
       <ul class="navbar">
         <li>
           <a href="index.html">Inicial</a>
@@ -89,8 +89,8 @@
   <!--footer inicio-->
   <div class="footer">
     <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-      <span class="version">v1.0.0</span>
+      <h4> </h4>
+      <span class="version"></span>
     </div>
   </div>
   <!--footer fim-->
@@ -102,24 +102,72 @@
   function cadastrar() {
     aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    // var empresaVar = listaEmpresas.value;
+    var arroba = emailVar.indexOf('@');
+    var ponto = emailVar.indexOf('.');
 
-    if ( nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" ) {
+
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == ""
+    ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "Complete todos os campos";
 
       finalizarAguardar();
       return false;
-    } else {
+      
+     } else if (nomeVar.lenght < 2) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Nome deve conter pelo menos 2 caracteres)";
+        
+      finalizarAguardar();
+      return false;
+    }
+
+    else if (arroba < 0) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Email deve conter @)";
+        
+      finalizarAguardar();
+      return false;
+    }
+
+      else if (ponto < 0) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(email deve conter .)";
+        
+      finalizarAguardar();
+      return false;
+    } else if (senhaVar.lenght <= 6) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Senha deve ser maior que 6 caracteres)";
+        
+      finalizarAguardar();
+      return false;
+
+    } else if (confirmacaoSenhaVar != senhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Senha deve ser igual a confirmação de senha)";
+        
+      finalizarAguardar();
+      return false;
+
+    }else {
       setInterval(sumirMensagem, 5000);
-    } 
+    }
+
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,25 +28,27 @@
 
         <div class="header-left dash-header">
 
-            <h1>Praias</h1>
+            <h1>Blog do Santos FC</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav">
-                <h3>Quiz</h3>
+            <div class="btn-nav-white">
+                <a href="cards.html">
+                <h3>Tabela</h3>
+            </a>
             </div>
 
             <div class="btn-nav-white">
                 <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
+                    <h3>Quiz</h3>
                 </a>
             </div>
 
              <div class="btn-nav-white">
                 <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>Forum</h3>
                 </a>
             </div> 
 
@@ -59,81 +61,80 @@
         <div class="dash">
             <div id="quizContainer">
                 <div id="inicarQuiz">
-                    <h1>Quiz Praias</h1>
-                    <p>Bora testar seus conhecimentos?</p>
+                    <h1>Quiz do Santos FC</h1>
+                    <p>Quanto você sabe do Santos FC?</p>
                     <button onclick="iniciar()">Jogar</button>
                 </div>
                 <div id="quiz" style="display: none;">
                     <div id="pergunta1" class="pergunta">
-                        <h2>Onde fica a praia de Copacabana?</h2>
-                        <button onclick="responder(this, 'Rio de Janeiro')">Acre</button>
-                        <button onclick="responder(this, 'Rio de Janeiro')">São Paulo</button>
-                        <button onclick="responder(this, 'Rio de Janeiro')">Rio de Janeiro</button>
-                        <button onclick="responder(this, 'Rio de Janeiro')">Roraima</button>
+                        <h2>Qual é o estádio do Santos FC?</h2>
+                        <button onclick="responder(this, 'Vila Belmiro')">Maracanã</button>
+                        <button onclick="responder(this, 'Vila Belmiro')">Vila Belmiro</button>
+                        <button onclick="responder(this, 'Vila Belmiro')">Pacaembu</button>
+                        <button onclick="responder(this, 'Vila Belmiro')">Morumbi</button>
                     </div>
                     <div id="pergunta2" class="pergunta" style="display: none;">
-                        <h2>Qual é a principal característica da Praia do Forte na Bahia?</h2>
-                        <button onclick="responder(this, 'Tartarugas')">Tartarugas</button>
-                        <button onclick="responder(this, 'Tartarugas')">Capivaras</button>
-                        <button onclick="responder(this, 'Tartarugas')">Tubarões</button>
-                        <button onclick="responder(this, 'Tartarugas')">Águas Fortes</button>
+                        <h2>Quantas vezes o Santos FC venceu a Libertadores?</h2>
+                        <button onclick="responder(this, '3')">3</button>
+                        <button onclick="responder(this, '3')">2</button>
+                        <button onclick="responder(this, '3')">4</button>
+                        <button onclick="responder(this, '3')">1</button>
                     </div>
                     <div id="pergunta3" class="pergunta" style="display: none;">
-                        <h2>Em qual cidade brasileira fica a Praia de Ponta Negra?</h2>
-                        <button onclick="responder(this, 'Natal')">João Pessoa</button>
-                        <button onclick="responder(this, 'Natal')">Natal</button>
-                        <button onclick="responder(this, 'Natal')">Santo André</button>
-                        <button onclick="responder(this, 'Natal')">Recife</button>
+                        <h2>Qual título o Santos conquistou em 2011?</h2>
+                        <button onclick="responder(this, 'Libertadores')">Brasileiro</button>
+                        <button onclick="responder(this, 'Libertadores')">Libertadores</button>
+                        <button onclick="responder(this, 'Libertadores')">Mundial de clubes</button>
+                        <button onclick="responder(this, 'Libertadores')">Copa do Brasil</button>
                     </div>
                     <div id="pergunta4" class="pergunta" style="display: none;">
-                        <h2>Onde está localizada a Praia de Jericoacoara?</h2>
-                        <button onclick="responder(this, 'Ceará')">Florianópolis</button>
-                        <button onclick="responder(this, 'Ceará')">Rio de Janeiro</button>
-                        <button onclick="responder(this, 'Ceará')">Bahia</button>
-                        <button onclick="responder(this, 'Ceará')">Ceará</button>
+                        <h2>Em que ano Neymar estreou no time principal do Santos?</h2>
+                        <button onclick="responder(this, '2009')">2010</button>
+                        <button onclick="responder(this, '2009')">2008</button>
+                        <button onclick="responder(this, '2009')">2011</button>
+                        <button onclick="responder(this, '2009')">2009</button>
                     </div>
                     <div id="pergunta5" class="pergunta" style="display: none;">
-                        <h2>Qual é a praia mais famosa de Fernando de Noronha?</h2>
-                        <button onclick="responder(this, 'Baía')">Fernando de Noronha</button>
-                        <button onclick="responder(this, 'Baía')">Baía</button>
-                        <button onclick="responder(this, 'Baía')">Cabedelo</button>
-                        <button onclick="responder(this, 'Baía')">Porto de Galinhas</button>
+                        <h2>Qual é o maior rival do Santos FC?</h2>
+                        <button onclick="responder(this, 'Corinthians')">Palmeiras</button>
+                        <button onclick="responder(this, 'Corinthians')">Corinthians</button>
+                        <button onclick="responder(this, 'Corinthians')">São Paulo</button>
+                        <button onclick="responder(this, 'Corinthians')">Ponte Preta</button>
                     </div>
                     <div id="pergunta6" class="pergunta" style="display: none;">
-                        <h2>Complete o nome da música de Tom jobim (é uma praia): Garota de:</h2>
-                        <button onclick="responder(this, 'Ipanema')">Copacabana</button>
-                        <button onclick="responder(this, 'Ipanema')">Leblon</button>
-                        <button onclick="responder(this, 'Ipanema')">Ipanema</button>
-                        <button onclick="responder(this, 'Ipanema')">Paraty</button>
+                        <h2>Quantos gols Pelé marcou pelo Santos FC?</h2>
+                        <button onclick="responder(this, '1091')">987</button>
+                        <button onclick="responder(this, '1091')">1087</button>
+                        <button onclick="responder(this, '1091')">1091</button>
+                        <button onclick="responder(this, '1091')">1147</button>
                     </div>
                     <div id="pergunta7" class="pergunta" style="display: none;">
-                        <h2>O que faz a Praia do Rosa ser tão especial?</h2>
-                        <button onclick="responder(this, 'Presença de Baleias')">Presença de Baleias</button>
-                        <button onclick="responder(this, 'Presença de Baleias')">Ataques de Tubarão</button>
-                        <button onclick="responder(this, 'Presença de Baleias')">Por do Sol</button>
-                        <button onclick="responder(this, 'Presença de Baleias')">Tartarugas</button>
+                        <h2>Em qual ano o Santos Futebol Clube foi fundado?</h2>
+                        <button onclick="responder(this, '1912')">1912</button>
+                        <button onclick="responder(this, '1912')">1910</button>
+                        <button onclick="responder(this, '1912')">1919</button>
+                        <button onclick="responder(this, '1912')">1922</button>
                     </div>
                     <div id="pergunta8" class="pergunta" style="display: none;">
-                        <h2>Que estado brasileiro é conhecido pelas suas praias paradisíacas como Porto de Galinhas?
-                        </h2>
-                        <button onclick="responder(this, 'Pernambuco')">Rio de Janeiro</button>
-                        <button onclick="responder(this, 'Pernambuco')">Balneário Camboriú</button>
-                        <button onclick="responder(this, 'Pernambuco')">Paraíba</button>
-                        <button onclick="responder(this, 'Pernambuco')">Pernambuco</button>
+                        <h2>Qual foi o maior placar já registrado em um jogo oficial do Santos FC?</h2>
+                        <button onclick="responder(this, '11-0')">10-1</button>
+                        <button onclick="responder(this, '11-0')">15-0</button>
+                        <button onclick="responder(this, '11-0')">11-0</button>
+                        <button onclick="responder(this, '11-0')">9-1</button>
                     </div>
                     <div id="pergunta9" class="pergunta" style="display: none;">
-                        <h2>Como se chama a famosa praia de nudismo paraibana?</h2>
-                        <button onclick="responder(this, 'Praia de Tambaba')">Praia do Pinho</button>
-                        <button onclick="responder(this, 'Praia de Tambaba')">Praia de Tambaba</button>
-                        <button onclick="responder(this, 'Praia de Tambaba')">Praia do Abricó</button>
-                        <button onclick="responder(this, 'Praia de Tambaba')">Praia de Barra Seca</button>
+                        <h2>Em que ano Pelé marcou seu milésimo gol?</h2>
+                        <button onclick="responder(this, '1969')">1970</button>
+                        <button onclick="responder(this, '1969')">1969</button>
+                        <button onclick="responder(this, '1969')">1966</button>
+                        <button onclick="responder(this, '1969')">1959</button>
                     </div>
                     <div id="pergunta10" class="pergunta" style="display: none;">
-                        <h2>Qual praia é conhecida por formar um banco de areia vermelho quando a maré está baixa?</h2>
-                        <button onclick="responder(this, 'Camboinha')">Camboinha</button>
-                        <button onclick="responder(this, 'Camboinha')">Praia do Jacaré</button>
-                        <button onclick="responder(this, 'Camboinha')">Pipa</button>
-                        <button onclick="responder(this, 'Camboinha')">Fernando de Noronha</button>
+                        <h2>Quem é o maior goleador do Santos FC após Pelé?</h2>
+                        <button onclick="responder(this, 'Pepe')">Pepe</button>
+                        <button onclick="responder(this, 'Pepe')">Neymar</button>
+                        <button onclick="responder(this, 'Pepe')">Rodrygo</button>
+                        <button onclick="responder(this, 'Pepe')">Gabriel Barbosa (Gabigol)</button>
                     </div>
                 </div>
                 <div id="resultados" style="display: none;">
@@ -147,9 +148,10 @@
                     <button onclick="voltar()">Voltar</button>
                 </div>
             </div>
+            <div id="dizendo"></div>
         </div>
     </div>
-    <div id="dizendo"></div>
+   
 </body>
 
 <script>
@@ -333,49 +335,7 @@
         })
     }, 200)
 
-//     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-// let proximaAtualizacao;
-
-// window.onload = showQuizUsers();
-
-// function showQuizUsers() {
-//     document.getElementById("graficos").innerHTML += `
-//     <div id="grafico">
-//         <h3 class="tituloGraficos">
-//             <span id="tituloGrafico">Seu resultado praiano</span>
-//         </h3>
-//         <div class="graph">
-//             <canvas id="myChartCanvas"></canvas>
-//         </div>
-//         <div class="label-captura">
-//             <p id="avisoCaptura" style="color: white">Gráficos</p>
-//         </div>
-//     </div>
-// `;
-
-//     obterDadosGrafico();
-// }
-
-// function obterDadosGrafico() {
-//         if (proximaAtualizacao != undefined) {
-//             clearTimeout(proximaAtualizacao);
-//         }
-
-//         fetch(`/usuarios/findQuiz/`, { cache: 'no-store' }).then(function (response) {
-//             if (response.ok) {
-//                 response.json().then(function (resposta) {
-//                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-//                     plotarGrafico(resposta);
-//                 });
-//             } else {
-//                 console.error('Nenhum dado encontrado ou erro na API');
-//             }
-//         })
-//             .catch(function (error) {
-//                 console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
-//             });
-//     }
 </script>
 
 </html>

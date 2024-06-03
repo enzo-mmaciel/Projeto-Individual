@@ -6,6 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #333;
+  
 }
 
 .label-captura {
@@ -101,14 +103,14 @@ body {
   margin-bottom: 80px;
 }
 
-.div-buttons {
+/* .div-buttons {
   display: flex;
   justify-content: flex-end;
 }
 
 .div-buttons>* {
   margin-left: 30px;
-}
+} */
 
 /* pagina graficos */
 
@@ -331,7 +333,7 @@ canvas {
 
 .janela {
   display: flex;
-  /* width: 100vw; */
+  
 }
 
 .header-left a {
@@ -388,10 +390,123 @@ canvas {
   font-weight: 800;
 }
 
+#quizContainer {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#inicarQuiz {
+  text-align: center;
+}
+
+#inicarQuiz h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#inicarQuiz p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#inicarQuiz button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#inicarQuiz button:hover {
+  background-color: #3e8e41;
+}
+
+.pergunta {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pergunta h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.pergunta button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pergunta button:hover {
+  background-color: #ccc;
+}
+
+#resultados {
+  text-align: center;
+}
+
+#resultados h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#indicadores {
+  margin-bottom: 20px;
+}
+
+#indicadores p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#graficoResultados {
+  width: 100%;
+  height: 300px;
+}
+
+#dizendo {
+  text-align: center;
+  margin-top: 40px;
+}
+
+#dizendo button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#dizendo button:hover {
+  background-color: #3e8e41;
+}
+
+.btn-logout {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.btn-logout {
+  color: inherit;
+  text-decoration: none;
+}
+.btn-white {
+  color: #144a63;
+  background-color: white;
+}
 .btn-nav {
   width: 40%;
-  color: black;
-  background-color: whitesmoke;
+  color: white;
+  background-color: #144a63;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
@@ -400,14 +515,14 @@ canvas {
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid black;
+  border: 3px solid #144a63;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white h3 {
-  color: black;
+  color: #144a63;
   padding: 0;
   margin: 0;
 }
@@ -422,167 +537,11 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
+  background-color: #144a63;
   color: white;
   border-radius: 10px;
   text-align: center;
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
-}
-
-.iniciarQuiz {
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
-
-.quiz_container{
-margin: 0;
-padding: 0;
-align-items: center;
-
-
-}
-
-#quiz_container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 20px auto; /* margin-top e centralizado horizontalmente */
-}
-
-/* Estilo para a seção inicial do quiz */
-#inicarQuiz {
-  text-align: center;
-}
-
-#inicarQuiz h1 {
-  font-family: 'Exo 2', sans-serif;
-  font-size: 2em;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-#inicarQuiz p {
-  font-family: 'Exo 2', sans-serif;
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  color: #666;
-}
-
-#inicarQuiz button {
-  font-family: 'Exo 2', sans-serif;
-  font-size: 1em;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#inicarQuiz button:hover {
-  background-color: #0056b3;
-}
-
-/* Estilo para as perguntas do quiz */
-.pergunta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-  width: 100%; /* Garante que a pergunta ocupe toda a largura disponível */
-}
-
-.pergunta h2 {
-  font-family: 'Exo 2', sans-serif;
-  font-size: 1.5em;
-  color: #333;
-  margin-bottom: 15px;
-  text-align: center; /* Centraliza o texto da pergunta */
-}
-
-.pergunta button {
-  font-family: 'Exo 2', sans-serif;
-  font-size: 1em;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px 0;
-  transition: background-color 0.3s ease;
-  width: 100%; /* Garante que os botões ocupem toda a largura disponível */
-  text-align: center; /* Centraliza o texto dos botões */
-}
-
-.pergunta button:hover {
-  background-color: #0056b3;
-}
-
-/* Estilo para os resultados do quiz */
-#resultados {
-  text-align: center;
-  padding: 20px;
-}
-
-#resultados h2 {
-  font-family: 'Exo 2', sans-serif;
-  font-size: 2em;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-#resultados #graficoResultados {
-  margin: 20px 0;
-}
-
-#resultados #indicadores p {
-  font-family: 'Exo 2', sans-serif;
-  font-size: 1.2em;
-  color: #666;
-  margin: 5px 0;
-}
-
-#resultados button {
-  font-family: 'Exo 2', sans-serif;
-  font-size: 1em;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#resultados button:hover {
-  background-color: #0056b3;
-}
-
-.iniciarQuiz{
-
-  font-family: 'Exo 2', sans-serif;
-  font-size: 1em;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px 0;
-  transition: background-color 0.3s ease;
-  width: 100%; /* Garante que os botões ocupem toda a largura disponível */
-  text-align: center; /* Centraliza o texto dos botões */
-
-
 }

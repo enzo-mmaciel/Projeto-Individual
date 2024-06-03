@@ -17,20 +17,27 @@ senha varchar(45)
 
 create table quiz (
 idQuiz int primary key auto_increment,
-pontuacao varchar(45),
-acertos varchar(45),
-erros varchar(45),
+acertos int,
+erros int,
 fkUsuario int,
 foreign key (fkUsuario) references usuario(idUsuario)
 );
 
 create table forum(
-idForum int primary key auto_increment,
+id int primary key auto_increment,
 titulo varchar(45),
-texto text,
-fkUsuario int, 
-foreign key (fkUsuario) references usuario(idUsuario)
+descricao text,
+fk_usuario int, 
+foreign key (fk_usuario) references usuario(idUsuario)
 );
+
+select * from usuario;
+
+select * from forum;
+
+select * from quiz;
+
+
 
 -- CREATE DATABASE aquatech;
 
