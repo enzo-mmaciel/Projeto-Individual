@@ -8,63 +8,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
 
+    <!-- Links para os arquivos CSS -->
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
 
+    <!-- Link para o arquivo JavaScript de sessão -->
     <script src="../js/sessao.js"></script>
-    <!-- <script src="../js/alerta.js"></script> -->
 
+    <!-- Link para fonte do Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,70
-        0;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script> -->
+    <!-- Link para o Chart.js para criar gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Estilos adicionais para o gráfico -->
+    <style>
+        #graficoResultados {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- Estrutura principal da página -->
     <div class="janela">
 
+        <!-- Cabeçalho do painel -->
         <div class="header-left dash-header">
-
             <h1>Blog do Santos FC</h1>
-
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-
+            <!-- Links para outras páginas -->
             <div class="btn-nav-white">
                 <a href="cards.html">
-                <h3>Tabela</h3>
-            </a>
+                    <h3>Tabela</h3>
+                </a>
             </div>
-
             <div class="btn-nav-white">
                 <a href="./dashboard.html">
                     <h3>Quiz</h3>
                 </a>
             </div>
-
-             <div class="btn-nav-white">
+            <div class="btn-nav-white">
                 <a href="./mural.html">
                     <h3>Forum</h3>
                 </a>
-            </div> 
-
+            </div>
+            <!-- Botão de logout -->
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
-
         </div>
 
+        <!-- Conteúdo do painel -->
         <div class="dash">
             <div id="quizContainer">
+                <!-- Início do quiz -->
                 <div id="inicarQuiz">
                     <h1>Quiz do Santos FC</h1>
                     <p>Quanto você sabe do Santos FC?</p>
                     <button onclick="iniciar()">Jogar</button>
                 </div>
+                <!-- Perguntas do quiz -->
                 <div id="quiz" style="display: none;">
                     <div id="pergunta1" class="pergunta">
                         <h2>Qual é o estádio do Santos FC?</h2>
@@ -137,6 +147,7 @@
                         <button onclick="responder(this, 'Pepe')">Gabriel Barbosa (Gabigol)</button>
                     </div>
                 </div>
+                <!-- Resultados do quiz -->
                 <div id="resultados" style="display: none;">
                     <h2>Resultados do Quiz</h2>
                     <canvas id="graficoResultados"></canvas>
@@ -148,92 +159,99 @@
                     <button onclick="voltar()">Voltar</button>
                 </div>
             </div>
+            <!-- Exibição de mensagem -->
             <div id="dizendo"></div>
         </div>
     </div>
-   
-</body>
 
-<script>
-    var respCorretaDash = 0;
-    var respErradaDash = 0;
+    <!-- Script JavaScript -->
+    <script>
+        // Variáveis para contagem de respostas corretas e erradas
+        var respCorreta = 0;
+        var respErrada = 0;
 
-    // Define o nome do usuário a partir da sessão
-    const b_usuario = document.getElementById('b_usuario');
-    if (sessionStorage.NOME_USUARIO) {
-        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    } else {
-        b_usuario.innerHTML = 'usuário';
-    }
-
-    var respCorreta = 0;
-    var respErrada = 0;
-
-    function iniciar() {
-        document.getElementById('inicarQuiz').style.display = 'none';
-        document.getElementById('quiz').style.display = 'block';
-    }
-
-    var perguntaAtual = 1;
-    var totalDePerguntas = 10; // Corrigido para o número real de perguntas
-
-    function responder(botao, respostaCorreta) {
-        const respostaSelecionada = botao.textContent;
-        if (respostaSelecionada === respostaCorreta) {
-            respCorreta++;
+        // Define o nome do usuário a partir da sessão
+        const b_usuario = document.getElementById('b_usuario');
+        if (sessionStorage.NOME_USUARIO) {
+            b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
         } else {
-            respErrada++;
-        }
-        document.getElementById("pergunta" + perguntaAtual).style.display = "none";
-        if (perguntaAtual < totalDePerguntas) {
-            perguntaAtual++;
-            document.getElementById("pergunta" + perguntaAtual).style.display = "block";
-        } else {
-            dizendo.innerHTML = `<button onclick="insert_banco(), timeout">Finalizar</button>` //exibirResultados();
-        }
-    }
-
-    function obterIdUsuario() {
-        return sessionStorage.ID_USUARIO || 'desconhecido';
-    }
-
-    function exibirResultados() {
-        const fk_usuario = obterIdUsuario();
-        document.getElementById("quiz").style.display = "none";
-        document.getElementById("resultados").style.display = "block";
-
-        const totalRespostas = respCorreta + respErrada;
-        const media = (respCorreta / totalRespostas) * 100;
-        document.getElementById("media").textContent = media.toFixed(2) + "%";
-
-        const mediaGeral = 70;
-        if (media >= mediaGeral) {
-            document.getElementById("acimaOuAbaixo").textContent = "acima";
-        } else {
-            document.getElementById("acimaOuAbaixo").textContent = "abaixo";
+            b_usuario.innerHTML = 'usuário';
         }
 
-        var desempenho = '';
-        if (media >= 80) {
-            desempenho = 'Bom';
-        } else if (media >= 50) {
-            desempenho = 'Médio';
-        } else {
-            desempenho = 'Ruim';
+        // Função para iniciar o quiz
+        function iniciar() {
+            document.getElementById('inicarQuiz').style.display = 'none';
+            document.getElementById('quiz').style.display = 'block';
         }
-        document.getElementById("desempenho").textContent = desempenho;
 
-        fetch('/medidas/salvar-resultados', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                acertos: respCorreta,
-                erros: respErrada,
-                fk_usuario: fk_usuario
+        // Variáveis de controle das perguntas e total de perguntas
+        var perguntaAtual = 1;
+        var totalDePerguntas = 10;
+
+        // Função para responder às perguntas
+        function responder(botao, respostaCorreta) {
+            const respostaSelecionada = botao.textContent;
+            if (respostaSelecionada === respostaCorreta) {
+                respCorreta++;
+            } else {
+                respErrada++;
+            }
+            document.getElementById("pergunta" + perguntaAtual).style.display = "none";
+            if (perguntaAtual < totalDePerguntas) {
+                perguntaAtual++;
+                document.getElementById("pergunta" + perguntaAtual).style.display = "block";
+            } else {
+                document.getElementById('dizendo').innerHTML = `<button onclick="finalizar()">Finalizar</button>`;
+            }
+        }
+
+        // Função para obter o ID do usuário da sessão
+        function obterIdUsuario() {
+            return sessionStorage.ID_USUARIO || 'desconhecido';
+        }
+
+        // Função para exibir os resultados do quiz
+        function exibirResultados() {
+            const fk_usuario = obterIdUsuario();
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("resultados").style.display = "block";
+
+            // Validações para mostrar o percentual do desempenho do usuario após ele jogar o quis -- 21/06/2024
+            const totalRespostas = respCorreta + respErrada;
+            const media = (respCorreta / totalRespostas) * 100;
+            document.getElementById("media").textContent = media.toFixed(2) + "%";
+
+            // Validações para mostrar o percentual do desempenho do usuario após ele jogar o quis -- 21/06/2024
+            const mediaGeral = 70;
+            if (media >= mediaGeral) {
+                document.getElementById("acimaOuAbaixo").textContent = "acima";
+            } else {
+                document.getElementById("acimaOuAbaixo").textContent = "abaixo";
+            }
+
+            // Validações para mostrar o percentual do desempenho do usuario após ele jogar o quis -- 21/06/2024
+            var desempenho = '';
+            if (media >= 80) {
+                desempenho = 'Bom';
+            } else if (media >= 50) {
+                desempenho = 'Médio';
+            } else {
+                desempenho = 'Ruim';
+            }
+            document.getElementById("desempenho").textContent = desempenho;
+
+            // Requisição para salvar os resultados no servidor
+            fetch('/medidas/salvar-resultados', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    acertos: respCorreta,
+                    erros: respErrada,
+                    fk_usuario: fk_usuario
+                })
             })
-        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao salvar resultados');
@@ -247,95 +265,104 @@
                 console.error('Erro ao salvar resultados:', error);
             });
 
-        const ctx = document.getElementById('graficoResultados').getContext('2d');
-        const quizChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Respostas Corretas', 'Respostas Incorretas'],
-                datasets: [{
-                    label: 'Quantidade',
-                    data: [respCorreta, respErrada],
-                    backgroundColor: [
-                        'rgba(75, 192, 192)',
-                        'rgba(255, 99, 132)',
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+            // Configuração e criação do gráfico de resultados em formato de pizza -- 21/06/2024
+            const ctx = document.getElementById('graficoResultados').getContext('2d');
+            const quizChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Respostas Corretas', 'Respostas Incorretas'],
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: [respCorreta, respErrada],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 99, 132, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-        });
-    }
+            });
+        }
 
-    function voltar() {
-        window.location.href = './dashboard.html';
-    }
+        // Função para voltar à página anterior -- 21/06/2024
+        function voltar() {
+            window.location.href = './dashboard.html';
+        }
 
-    function limparSessao() {
-        sessionStorage.clear();
-        window.location.href = '../index.html';
-    }
+        // Função para limpar a sessão e sair
+        function limparSessao() {
+            sessionStorage.clear();
+            window.location.href = '../index.html';
+        }
 
-    function insert_banco() {
-        var respCorretaVar = respCorreta;
-        var respErradaVar = respErrada;
-        // var idUsuario = idUsuario;
+        // Função para finalizar o quiz
+        function finalizar() {
+            insertBanco();
+            exibirResultados();
+        }
 
-
-        fetch("/usuarios/insert_banco", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                respCorretaServer: respCorretaVar,
-                respErradaServer: respErradaVar,
-                idUsuarioServer: sessionStorage.ID_USUARIO,
-            }),
-        })
-    }
-
-    var timeout = setTimeout(function showQuiz() {
-        fetch("/usuarios/showQuiz", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idUsuarioServer: sessionStorage.ID_USUARIO
+        // Função para inserir os resultados no banco de dados
+        function insertBanco() {
+            fetch("/usuarios/insert_banco", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    respCorretaServer: respCorreta,
+                    respErradaServer: respErrada,
+                    idUsuarioServer: sessionStorage.ID_USUARIO,
+                }),
             })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-            if (resposta.ok) {
-                console.log(resposta);
+            .then(response => response.json())
+            .then(data => {
+                console.log('Resultados inseridos com sucesso:', data);
+            })
+            .catch(error => {
+                console.error('Erro ao inserir resultados:', error);
+            });
+        }
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    console.log(json.resultadoShowQuiz[0])
-
-                    var resultado = json.resultadoShowQuiz[0];
-                    
-                    var medRespCerta = resultado.acertos;
-                    var medRespErrada = resultado.erros;
-
-                    respCorretaDash = medRespCerta;
-                    respErradaDash = medRespErrada;
+        // Função para mostrar o resultado do quiz
+        function showQuiz() {
+            fetch("/usuarios/showQuiz", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idUsuarioServer: sessionStorage.ID_USUARIO
                 })
-            }
-        })
-    }, 200)
+            })
+            .then(response => response.json())
+            .then(data => {
+                var resultado = data.resultadoShowQuiz[0];
+                respCorretaDash = resultado.acertos;
+                respErradaDash = resultado.erros;
+            })
+            .catch(error => {
+                console.error('Erro ao obter quiz:', error);
+            });
+        }
 
+        // Chamada para mostrar o quiz após um tempo
+        setTimeout(showQuiz, 200);
 
-</script>
+    </script>
+
+</body>
 
 </html>
