@@ -28,4 +28,10 @@ router.post("/findLastQuiz", function (req, res) {
     usuarioController.findLastQuiz(req, res);
 });
 
+router.get("/rank", function(req, res){
+    usuarioController.rank(req, res);
+})
+
+
+
 module.exports = router;

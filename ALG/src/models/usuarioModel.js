@@ -70,11 +70,40 @@ function findLastQuiz(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function findLastQuiz(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function findLastQuiz():", idUsuario);
+    
+    var instrucaoSql = `
+        SELECT acertos, erros FROM quiz WHERE idQuiz = (SELECT MAX(idQuiz) FROM quiz WHERE fkUsuario = ${idUsuario});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+// Função para obter o ranking dos usuários -- 12/07/2024
+function rank() {
+    
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function rank():");
+
+    // fazendo o select para obter e exibir o ranking dos usuários -- 12/07/2024
+    var instrucaoSql = `
+       SELECT usuario.nome, MAX(quiz.acertos) AS acertos FROM usuario INNER JOIN quiz ON usuario.idUsuario = quiz.fkUsuario GROUP BY usuario.nome ORDER BY acertos ASC LIMIT 10;
+    `;
+    
+  
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    
+    
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     autenticar,
     cadastrar,
     insert_banco,
     showQuiz,
     findQuiz,
-    findLastQuiz
+    findLastQuiz,
+    rank
 };

@@ -156,6 +156,29 @@ function findLastQuiz(req, res) {
     });
 }
 
+// Função que lida com a requisição de ranking dos usuários -- 12/07/2024
+function rank(req, res) {
+    
+    usuarioModel.rank()
+        .then(
+            function(resultado) {
+                // Envia o resultado da consulta em formato JSON como resposta -- 12/07/2024
+                res.json(resultado);
+            }
+        ).catch(
+            function(erro) {
+                
+                console.log(erro);
+                console.log(
+                    "\nErro ao jogar as pontuações ao ranking! Erro:",
+                    erro.sqlMessage
+                );
+                
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 
 module.exports = {
     autenticar,
@@ -163,5 +186,6 @@ module.exports = {
     insert_banco,
     showQuiz,
     findQuiz,
-    findLastQuiz
-}
+    findLastQuiz,
+    rank
+};
