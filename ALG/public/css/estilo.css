@@ -3,10 +3,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   background-repeat: no-repeat;
-   background-size: contain; 
-
+  font-family: 'Barlow', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-repeat: no-repeat;
+  background-size: contain; 
 }
 
 :root {
@@ -23,10 +22,10 @@ body {
   margin: auto;
 }
 
-.simulador .container{
-width: 100%;
-overflow: hidden;
-height: 100%;
+.simulador .container {
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
 }
 
 .header {
@@ -71,7 +70,6 @@ height: 100%;
 }
 
 /* BANNER */
-
 .banner {
   height: var(--tamanho-banner);
   color: white;
@@ -98,58 +96,24 @@ height: 100%;
   font-weight: 800;
 }
 
-/* MISSÃO VISÃO VALORES */
-
-/* .social {
-  background-color: #e5e5e5;
-  display: flex;
-}
-
-.social .container {
-  justify-content: center;
-}
-
-.box img {
-  width: 170px;
-}
-
-.social .container .boxes {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
-}
-
-.social p {
-  text-align: center;
-} */
-
 .box {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* FOOTER */
- 
- 
-
 /* LOGIN */
-
 .login {
   height: var(--tamanho-login);
   background-image: url('https://ludopedio.org.br/wp-content/uploads/santos-x-flamengo-7.jpg');
-  background-size: 100%;
   background-size: cover;
   align-items: center;
-  
 }
 
 .login .container {
   justify-content: center;
   align-items: center;
   height: 100%;
-
 }
 
 .card {
@@ -184,18 +148,8 @@ height: 100%;
   font-weight: 800;
 }
 
-.formulario input {
+.formulario input, .formulario select {
   border: 2px solid #000000;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
-}
-
-.formulario select {
-  border: 2px solid #000000;
-  background-color: white;
-  color: gray;
-  height: 36px;
   text-align: center;
   border-radius: 10px;
   margin: 0;
@@ -217,7 +171,6 @@ height: 100%;
   font-size: 18px;
   color: #fff;
   background-color: black;
-  opacity: 100%;
   width: 120px;
   height: 30px;
   align-self: center;
@@ -236,12 +189,11 @@ height: 100%;
 }
 
 #div_erros_login {
-  display: none
+  display: none;
 }
 
 /* FORMULARIO */
-
-.alerta_erro{
+.alerta_erro {
   display: flex;
   justify-content: flex-end;
 }
@@ -258,19 +210,9 @@ height: 100%;
   margin-right: 10%;
 }
 
-.card_erro #mensagem_erro{
+.card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
-}
-
-.formulario .tipo_campo {
-  font-size: 20px;
-  font-weight: 600 !important;
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
 }
 
 input {
@@ -295,18 +237,6 @@ input {
   margin-top: 5px;
 }
 
-.loading-div {
-  width: 50px;
-  margin: auto;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
-
-/* SIMULADOR */
 .box_memorial {
   width: 100%;
   background-color: black;
@@ -317,11 +247,7 @@ input {
   height: fit-content;
   padding: 20px 0;
   opacity: 100%;
-
-
 }
-
-
 
 .simulador {
   color: white;
@@ -330,11 +256,9 @@ input {
 
 .simulador .container {
   flex-direction: column;
-  
 }
 
 /* ALERTA */
-
 #alerta {
   position: absolute;
   right: 0;
@@ -384,71 +308,54 @@ input {
   background: whitesmoke;
   background-size: 400% 400%;
   padding: 5%;
-  height: 370px;
   border-top: 3px solid #000000;
   border-bottom: 3px solid black;
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
 }
 
 .corpo3 {
-height: 350px;
-background-color: gray;
-padding: 6%;
-text-align: center;
-
+  background-color: gray;
+  padding: 6%;
+  text-align: center;
 }
 
 .cardTop {
-display: flex;
-justify-content: space-between;
-
+  display: flex;
+  justify-content: space-between;
 }
 
 .card {
-width: 500px;
+  width: 30%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
 
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h2 {
+  margin: 10px 0;
+  font-size: 24px;
+}
+
+.card p {
+  font-size: 16px;
+  color: #333;
 }
 
 .TextoSobreMIM {
-width: 600px;
-margin-bottom: 10px;
-font-size: 23px;
+  width: 600px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  }
 
 
-
-}
-
-.Memorial {
-background-color: black;
-opacity: 100%;
-
-
-}
-
-
-.imagem_time {
-width: 600px;
-border: 5px solid black;
-box-shadow: 0px 0px 5px black;
-margin-right: 50px;
-justify-content: right;
-border-radius: 20px;
-
-}
-
-.imagem_time:hover{
-transform: scale(1.1);
-
-
-
-}
-
-.sobre h1 {
-font-size: 20px
-
-}
 
 .texto_sobre {
 border: 5px solid black;
@@ -464,46 +371,17 @@ transform: scale(1.1);
 
 }
 
-
-
-
-.corpo3{
-  background-color: white;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  padding: 50px;
-  height: 600px;
-  align-items: center;
-  justify-content: space-between;
-  justify-items: center;
+.Memorial {
+  background-color: black;
+  opacity: 100%;
 }
 
-
-
-.card{
-  width: 200px;
-  align-items: center;
-  text-align: center;
-  display: flex;
-  padding: 60px;
-  font-size: 18px;
-  border-radius: 5%;
-  box-shadow: 0 0 10px rgb(217, 216, 216);
-  flex-direction: column;
-}
-
-.card img {
-  width: 200px;
-  height: 81px;
-  align-items: center;
-
-}     
-
-
-.servicos {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+.imagem_time {
+  width: 40%;
+  border: 5px solid black;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px black;
+  margin-right: 30px;
 }
 
 .card_login {
@@ -538,87 +416,101 @@ transform: scale(1.1);
 }
 
 .card img {
-width: 250px; 
-height: 230px;
-
-
-
+  width: 100%;
+  height: 200px; /* Define a altura fixa */
+  object-fit: cover; /* Corta a imagem para preencher o espaço mantendo o aspecto */
+  border-radius: 10px;
 }
 
-/* CSS para a seção de curiosidades */
-.corpo3 {
-    background-color: #fff;
-    padding: 50px 0;
-    text-align: center;
+.inico_site {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.sobre {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #00030e;
+.inico_site p {
+  font-size: 40px;
 }
 
-.servicos {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
+.inico_site span {
+  font-weight: 800;
 }
 
-.card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    height: 700px;
+.inico_site img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid black;
+  transition: 200ms;
 }
 
-.card img {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid #ddd;
+.inico_site img:hover {
+  transform: scale(1.1);
 }
 
-.card h2 {
-    font-size: 1.5em;
-    color: black;
-    margin: 20px 20px 10px;
+/* FOOTER */
+.footer {
+  height: var(--tamanho-footer);
+  border-top: 2px solid white;
+  background-color: black;
+  opacity: 100%;
 }
 
-.card p {
-    font-size: 1em;
-    padding: 0 20px 20px;
-    line-height: 1.5;
-    text-align: left;
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  color: white;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-  .footer {
-
-    color: #fff;
-
- 
-} 
-
-
-/* .footer h4 {
-    margin: 0;
-    font-size: 1em;
+.footer h4 {
+  margin: 0;
 }
 
 .footer .version {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.8em;
-    color: #ccc;
-} */ 
+  font-size: 14px;
+  color: gray;
+}
 
-/* Mobile adjustments */
+.footer a {
+  color: white;
+  text-decoration: none;
+}
 
 
+.servicos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  margin: 10px;
+  max-width: 30%;
+  box-sizing: border-box;
+  
+}
+
+.card img {
+  width: 100%;
+  height: 200px; /* Define a altura fixa */
+  object-fit: cover; /* Corta a imagem para preencher o espaço mantendo o aspecto */
+  border-radius: 10px;
+}
+
+.imagem_time:hover{
+  transform: scale(1.1);
+  
+}  
+
+/* Estilo para o título do ranking */
+.enzo_ranking h1 {
+  text-align: center; /* Centraliza o texto */
+  color: rgb(255, 52, 52); /* Cor vermelha do título */
+  font-family: 'Exo 2', sans-serif; /* Fonte usada para o título */
+  margin-bottom: 20px; /* Espaçamento abaixo do título */
+}

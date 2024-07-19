@@ -66,10 +66,10 @@
 
         <div class="dash">
 
+           
             <div class="enzo_ranking" id="enzo_ranking">
-             <h1 style="color: rgb(255, 52, 52);">Ranking</h1>
+                <h1>Ranking</h1>
             </div>
-         </div>
 
     </div>
 
@@ -105,7 +105,12 @@ function gerarRanqueamento(resposta) {
     for (i = 0; i < resposta.length; i++) {
         let rankingCorreto = resposta[i];
         // Adiciona cada item do ranking ao HTML com estilização -- 12/07/2024
-        enzo_ranking.innerHTML += `<h2> <span style="color: rgb(255, 255, 255);"> ${i + 1} - </span> <b style="color: rgb(255, 255, 255);">${rankingCorreto.nome} : </b><span style="color: rgb(255, 255, 255);"> ${rankingCorreto.acertos} </span> </h2>`;
+        enzo_ranking.innerHTML +=`
+            <div class="ranking-item">
+                <span class="ranking-position">${i + 1} - ${rankingCorreto.nome}</span>
+                <span class="ranking-separator">|</span>
+                <span class="ranking-score">Pontuação : ${rankingCorreto.acertos} acertos </span>
+            </div>`;
     }
 }
 </script>

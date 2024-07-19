@@ -547,17 +547,69 @@ canvas {
 }
 
 
-.enzo_ranking{
-  height: 40%;
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.608);
-  backdrop-filter: blur(5px);
-  border: 3px solid white;
 
+
+/* Estilo geral para o ranking */
+.enzo_ranking {
+  background-color: #333; /* Cor de fundo escura para o ranking */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 20px; /* Espaçamento interno */
+  margin: 20px; /* Margem ao redor do contêiner */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilo para os itens do ranking */
+.enzo_ranking h2 {
+  font-family: 'Exo 2', sans-serif; /* Fonte usada para o texto */
+  color: #f0f0f0; /* Cor clara para o texto */
+  border-bottom: 1px solid #444; /* Linha sutil separando os itens */
+  padding: 10px 0; /* Espaçamento acima e abaixo do texto */
+  margin: 0; /* Remove a margem padrão */
+}
+
+/* Estilo para o número e nome */
+.enzo_ranking span {
+  color: #b5b8c7; /* Cor para o número do ranking */
+}
+
+.enzo_ranking b {
+  color: #e8e8e8; /* Cor para o nome do jogador */
+}
+
+/* Adiciona um efeito de hover para os itens do ranking */
+.enzo_ranking h2:hover {
+  background-color: #444; /* Cor de fundo ao passar o mouse */
+  cursor: pointer; /* Muda o cursor para indicar interatividade */
+}
+
+/* Estilo para o nome do jogador */
+.ranking-player {
+  color: rgb(255, 255, 255); /* Cor do nome */
+  flex-basis: 300%; /* Largura base para o nome */
+}
+
+.ranking-item {
+  display: flex; /* Usa flexbox para layout */
+  justify-content: space-between; /* Espaça o conteúdo para os extremos */
+  align-items: center; /* Alinha verticalmente ao centro */
+  padding: 10px 0; /* Espaçamento acima e abaixo */
+  border-bottom: 1px solid #444; /* Linha separadora */
+  color: rgb(255, 255, 255); /* Cor do texto */
+}
+
+/* Estilo para a posição e nome do jogador */
+.ranking-position {
+  color: rgb(255, 255, 255); /* Cor do texto */
+}
+
+/* Estilo para a pontuação */
+.ranking-score {
+  color: rgb(255, 255, 255); /* Cor da pontuação */
+  margin-left: 10px; /* Espaço entre nome e pontuação */
+}
+
+/* Estilo para a barra separadora */
+.ranking-separator {
+  margin: 0 10px; /* Espaço ao redor da barra separadora */
+  color: rgb(255, 255, 255); /* Cor da barra separadora */
 }
