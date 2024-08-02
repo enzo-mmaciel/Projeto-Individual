@@ -163,7 +163,8 @@
                         <p>Você está <span id="acimaOuAbaixo"></span> da média.</p>
                         <p>Desempenho: <span id="desempenho"></span></p>
                     </div>
-                    <button onclick="voltar()">Voltar</button>
+                    <button onclick="voltar()">Tentar Novamente</button> <br>
+                    <button onclick="analisar()">Analisar Desempenho pelo Grafico de Barras</button>
                     
                 </div>
             </div>
@@ -211,7 +212,17 @@
             } else {
                 document.getElementById('dizendo').innerHTML = `<button onclick="finalizar()">Finalizar</button>`;
             }
+
         }
+
+        function finalizar() {
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('dizendo').innerHTML = '';
+            document.getElementById('resultados').style.display = 'block';
+            mostrarResultados();
+        }
+
+       
 
         // Função para obter o ID do usuário da sessão
         function obterIdUsuario() {
@@ -308,6 +319,11 @@
         // Função para voltar à página anterior -- 21/06/2024
         function voltar() {
             window.location.href = './dashboard.html';
+        }
+
+        // Função para ir à página do grafico de barras -- 02/08/2024
+        function analisar() {
+            window.location.href = './cards.html';
         }
 
         // Função para limpar a sessão e sair
